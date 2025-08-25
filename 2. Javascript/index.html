@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 기본 문법 실습</title>
+    <!-- Tailwind CSS 로딩 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Google Fonts 로딩 */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        /* 결과 출력 영역 스타일 */
+        .output-box {
+            background-color: #f8fafc; /* bg-slate-50 */
+            border: 1px solid #e2e8f0; /* border-slate-200 */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 1rem; /* p-4 */
+            margin-top: 1rem; /* mt-4 */
+            font-family: monospace;
+            white-space: pre-wrap; /* 줄바꿈을 위해 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl font-bold text-gray-900">JavaScript 종합 실습</h1>
+        </header>
+
+        <!-- ===== Task 1: DOM 조작 및 이벤트 리스너 ===== -->
+        <section class="mb-12 p-6 bg-white rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold text-blue-600 border-b pb-2 mb-4">Task 1: DOM 조작 및 이벤트 리스너</h2>
+            <p class="text-gray-600 mb-4">아래 버튼을 클릭하면 자기소개 문구와 색상이 변경됩니다.</p>
+            <div id="intro-box" class="p-4 border rounded-lg transition-colors duration-300">
+                <p id="intro-text">안녕하세요! 백엔드 개발자를 꿈꾸는 학생입니다.</p>
+            </div>
+            <button id="change-btn" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                스타일 변경하기
+            </button>
+            <div class="output-box">
+                <strong>실행 방법:</strong> '스타일 변경하기' 버튼을 클릭하세요.<br>
+                <strong>결과:</strong> 위 문구의 텍스트와 배경색이 변경됩니다.
+            </div>
+        </section>
+
+        <!-- ===== Task 2: 사용자 정보 배열 처리 및 평균 계산 ===== -->
+        <section class="mb-12 p-6 bg-white rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold text-green-600 border-b pb-2 mb-4">Task 2: 배열과 연산 응용</h2>
+            <p class="text-gray-600 mb-4">미리 정의된 사용자 데이터 배열을 처리하고 나이 평균을 계산합니다.</p>
+            <div id="task2-output" class="output-box">결과가 여기에 출력됩니다...</div>
+        </section>
+
+        <!-- ===== Task 3: 조건문(if)과 반복문(for) ===== -->
+        <section class="mb-12 p-6 bg-white rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold text-indigo-600 border-b pb-2 mb-4">Task 3: if문과 for 반복문</h2>
+            <p class="text-gray-600 mb-4">숫자 배열에서 짝수를 골라내고, 과일 배열에서 특정 과일을 필터링합니다.</p>
+            <div id="task3-output" class="output-box">결과가 여기에 출력됩니다...</div>
+        </section>
+
+        <!-- ===== Task 4: 배열과 문자열 메서드 ===== -->
+        <section class="mb-12 p-6 bg-white rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold text-purple-600 border-b pb-2 mb-4">Task 4: 배열 및 문자열 메서드</h2>
+            <p class="text-gray-600 mb-4">배열에 값을 추가/삭제하고, 문자열을 조작합니다.</p>
+            <div id="task4-output" class="output-box">결과가 여기에 출력됩니다...</div>
+        </section>
+
+        <!-- ===== Task 5: 변수와 기본 연산자 ===== -->
+        <section class="p-6 bg-white rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold text-red-600 border-b pb-2 mb-4">Task 5: 변수와 기본 연산자</h2>
+            <p class="text-gray-600 mb-4">두 숫자를 사용하여 기본적인 사칙연산을 수행합니다.</p>
+            <div id="task5-output" class="output-box">결과가 여기에 출력됩니다...</div>
+        </section>
+
+    </div>
+
+    <script>
+        // 페이지의 모든 HTML 콘텐츠가 로드된 후 스크립트를 실행합니다.
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // ===== Task 1: DOM 조작 및 이벤트 리스너 =====
+            const introBox = document.getElementById('intro-box');
+            const introText = document.getElementById('intro-text');
+            const changeBtn = document.getElementById('change-btn');
+
+            changeBtn.addEventListener('click', () => {
+                // 텍스트 내용 변경
+                //introText.innerText = '버튼 클릭으로 내용이 변경되었습니다!';
+                
+                // 스타일 변경 (배경색)
+                introBox.style.backgroundColor = '#e0f2fe'; // light blue
+                introText.style.color = '#0284c7'; // darker blue
+                
+                console.log("Task 1: 버튼이 클릭되어 텍스트와 스타일이 변경되었습니다.");
+            });
+
+
+            // ===== Task 2: 사용자 정보 배열 처리 및 평균 계산 =====
+            const task2Output = document.getElementById('task2-output');
+            const users = [
+                { name: '김철수', age: 25 },
+                { name: '이영희', age: 30 },
+                { name: '박민준', age: 22 }
+            ];
+
+            let task2Result = '사용자 목록:\n';
+            let totalAge = 0;
+
+            users.forEach(user => {
+                task2Result += `- 이름: ${user.name}, 나이: ${user.age}\n`;
+                totalAge += user.age;
+            });
+
+            const averageAge = totalAge / users.length;
+            // 소수점 2자리까지 표시
+            task2Result += `\n나이 평균: ${averageAge.toFixed(2)}세`;
+
+            task2Output.innerText = task2Result;
+            console.log("--- Task 2 결과 ---");
+            console.log(users);
+            console.log(`나이 평균: ${averageAge.toFixed(2)}`);
+
+
+            // ===== Task 3: 조건문(if)과 반복문(for) =====
+            const task3Output = document.getElementById('task3-output');
+            const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            const evenNumbers = [];
+
+            // for문과 if문을 사용하여 짝수 찾기
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i] % 2 === 0) {
+                    evenNumbers.push(numbers[i]);
+                }
+            }
+
+            const fruits = ['사과', '바나나', '딸기', '오렌지', '포도'];
+            const filteredFruits = [];
+
+            // for...of문을 사용하여 '딸기'가 아닌 과일 필터링
+            for (const fruit of fruits) {
+                if (fruit !== '딸기') {
+                    filteredFruits.push(fruit);
+                }
+            }
+            
+            let task3Result = `원본 숫자 배열: [${numbers.join(', ')}]\n`;
+            task3Result += `짝수만 출력: [${evenNumbers.join(', ')}]\n\n`;
+            task3Result += `원본 과일 배열: [${fruits.join(', ')}]\n`;
+            task3Result += `'딸기'를 제외한 과일: [${filteredFruits.join(', ')}]`;
+            
+            task3Output.innerText = task3Result;
+            console.log("--- Task 3 결과 ---");
+            console.log("짝수:", evenNumbers);
+            console.log("필터링된 과일:", filteredFruits);
+
+
+            // ===== Task 4: 배열과 문자열 메서드 =====
+            const task4Output = document.getElementById('task4-output');
+            let numArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            let task4Result = `초기 배열: [${numArr.join(', ')}]\n`;
+
+            numArr.push(11); // 맨 뒤에 11 추가
+            task4Result += `push(11) 후: [${numArr.join(', ')}]\n`;
+
+            numArr.pop(); // 맨 뒤 요소 제거
+            task4Result += `pop() 후: [${numArr.join(', ')}]\n`;
+
+            const slicedArr = numArr.slice(2, 5); // index 2부터 5 전까지 (3, 4, 5)
+            task4Result += `slice(2, 5) 결과: [${slicedArr.join(', ')}]\n\n`;
+
+            let myString = "hello javascript!";
+            task4Result += `초기 문자열: "${myString}"\n`;
+            task4Result += `toUpperCase(): "${myString.toUpperCase()}"\n`;
+            task4Result += `substring(0, 5): "${myString.substring(0, 5)}"`;
+            
+            task4Output.innerText = task4Result;
+            console.log("--- Task 4 결과 ---");
+            console.log("배열 메서드 후:", numArr);
+            console.log("slice 결과:", slicedArr);
+            console.log("문자열 toUpperCase:", myString.toUpperCase());
+            console.log("문자열 substring:", myString.substring(0, 5));
+
+
+            // ===== Task 5: 변수와 기본 연산자 =====
+            const task5Output = document.getElementById('task5-output');
+            const num1 = 20;
+            const num2 = 5;
+            let task5Result = `숫자1: ${num1}, 숫자2: ${num2}\n\n`;
+            task5Result += `덧셈 (+): ${num1 + num2}\n`;
+            task5Result += `뺄셈 (-): ${num1 - num2}\n`;
+            task5Result += `곱셈 (*): ${num1 * num2}\n`;
+            task5Result += `나눗셈 (/): ${num1 / num2}\n`;
+            task5Result += `나머지 (%): ${num1 % 3}`;
+
+            task5Output.innerText = task5Result;
+            console.log("--- Task 5 결과 ---");
+            console.log(`덧셈: ${num1 + num2}`);
+            console.log(`뺄셈: ${num1 - num2}`);
+            console.log(`곱셈: ${num1 * num2}`);
+            console.log(`나눗셈: ${num1 / num2}`);
+        });
+    </script>
+</body>
+</html>
