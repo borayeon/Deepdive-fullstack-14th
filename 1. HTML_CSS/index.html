@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS 종합 실습</title>
+    <!-- Tailwind CSS 로딩 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Google Fonts 로딩 */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        /* --- Task 1: 반응형 유튜브 영상 --- */
+        /* 영상 컨테이너: 16:9 비율 유지 */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 = 0.5625) */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 0.75rem; /* 12px */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- Task 2: Flexbox 버튼 --- */
+        .custom-btn {
+            transition: all 0.3s ease;
+        }
+        /* 확인 버튼 호버 효과 */
+        .btn-confirm:hover {
+            background-color: #1d4ed8; /* darker blue */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        /* 취소 버튼 호버 효과 */
+        .btn-cancel:hover {
+            background-color: #9ca3af; /* darker gray */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* --- Task 3: CSS Grid 사진 격자 --- */
+        .photo-grid {
+            display: grid;
+            /* 3개의 열을 동일한 너비로 만듭니다. */
+            grid-template-columns: repeat(3, 1fr);
+            /* 사진 사이의 간격을 1rem (16px)으로 설정합니다. */
+            gap: 1rem;
+        }
+        .photo-grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 이미지가 잘리더라도 비율을 유지하며 꽉 채웁니다. */
+            border-radius: 0.5rem; /* 8px */
+            transition: transform 0.3s ease;
+        }
+        .photo-grid img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* 모바일 화면에서는 2열로 보이도록 설정 */
+        @media (max-width: 640px) {
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl font-bold text-slate-900">HTML & CSS 종합 실습</h1>
+            <p class="text-slate-600 mt-2">5가지 과제를 하나의 페이지에 구현한 결과물입니다.</p>
+        </header>
+
+        <!-- ===== Task 5 & 4: 기본 HTML 구조 및 CSS 스타일링 ===== -->
+        <section id="task5-4" class="mb-16 p-6 bg-white rounded-xl shadow-lg border border-slate-200">
+            <h2 class="text-2xl font-bold text-blue-600 border-b pb-2 mb-4">Task 5 & 4: 자기소개 페이지 (HTML 구조 + CSS 스타일)</h2>
+            
+            <!-- Task 5: h1, p, ul, li 태그를 사용한 기본 구조 -->
+            <div class="personal-intro">
+                <h3 class="text-3xl font-bold text-slate-800">김태경</h3>
+                <p class="mt-2 text-lg text-slate-700">안녕하세요! 백엔드 개발자를 꿈꾸는 학생입니다.</p>
+                
+                <h4 class="text-xl font-bold mt-6 mb-2 text-slate-800">취미 목록</h4>
+                <ul class="list-disc list-inside space-y-1 text-slate-600">
+                    <li>코딩하며 새로운 기능 만들기</li>
+                    <li>웹툰 감상</li>
+                    <li>밤 산책하기</li>
+                    <li>카페에서 대화하기</li>
+                </ul>
+            </div>
+            <!-- Task 4: 위 요소들에 적용된 스타일은 <style> 태그와 Tailwind CSS 클래스를 통해 지정되었습니다. -->
+            <!-- 예: 글자 크기(text-3xl), 색상(text-slate-800), 배경색(bg-white), 레이아웃(p-6, mb-16) 등 -->
+        </section>
+
+        <!-- ===== Task 3: CSS Grid 사진 격자 ===== -->
+        <section id="task3" class="mb-16 p-6 bg-white rounded-xl shadow-lg border border-slate-200">
+            <h2 class="text-2xl font-bold text-green-600 border-b pb-2 mb-4">Task 3: CSS Grid를 활용한 3x3 사진 격자</h2>
+            <div class="photo-grid">
+<img src="https://picsum.photos/seed/picsum1/400/400" alt="랜덤 이미지 1">
+                <img src="https://picsum.photos/seed/picsum2/400/400" alt="랜덤 이미지 2">
+                <img src="https://picsum.photos/seed/picsum3/400/400" alt="랜덤 이미지 3">
+                <img src="https://picsum.photos/seed/picsum4/400/400" alt="랜덤 이미지 4">
+                <img src="https://picsum.photos/seed/picsum5/400/400" alt="랜덤 이미지 5">
+                <img src="https://picsum.photos/seed/picsum6/400/400" alt="랜덤 이미지 6">
+                <img src="https://picsum.photos/seed/picsum7/400/400" alt="랜덤 이미지 7">
+                <img src="https://picsum.photos/seed/picsum8/400/400" alt="랜덤 이미지 8">
+                <img src="https://picsum.photos/seed/picsum9/400/400" alt="랜덤 이미지 9">
+            </div>
+        </section>
+
+        <!-- ===== Task 2: Flexbox 중앙 정렬 버튼 ===== -->
+        <section id="task2" class="mb-16 p-6 bg-white rounded-xl shadow-lg border border-slate-200">
+            <h2 class="text-2xl font-bold text-purple-600 border-b pb-2 mb-4">Task 2: Flexbox를 활용한 중앙 정렬 버튼</h2>
+            <!-- display:flex, justify-content:center 로 버튼들을 수평 중앙 정렬합니다. -->
+            <div class="button-container flex justify-center items-center gap-4 h-32 bg-slate-100 rounded-lg">
+                <button class="custom-btn btn-confirm bg-blue-500 text-white font-bold py-3 px-8 rounded-lg shadow-md">
+                    확인
+                </button>
+                <button class="custom-btn btn-cancel bg-gray-400 text-white font-bold py-3 px-8 rounded-lg shadow-md">
+                    취소
+                </button>
+            </div>
+        </section>
+
+        <!-- ===== Task 1: 반응형 유튜브 영상 임베드 ===== -->
+        <section id="task1" class="p-6 bg-white rounded-xl shadow-lg border border-slate-200">
+            <h2 class="text-2xl font-bold text-red-600 border-b pb-2 mb-4">Task 1: 반응형 유튜브 영상 임베드</h2>
+            <p class="text-slate-600 mb-4">화면 크기를 조절하면 영상 크기도 비율에 맞게 자동으로 조절됩니다.</p>
+            <div class="video-container">
+                <!-- 유튜브 '공유' > '퍼가기' 메뉴에서 복사한 코드 -->
+                <iframe src="https://www.youtube.com/embed/L_LUpnjgPso?si=mD4-I1fH3a-j1n3P" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
